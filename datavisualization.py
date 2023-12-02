@@ -39,14 +39,14 @@ def data_visualization():
         fig.write_image(f"{i}_hist.jpg")
         # a.append(fig)
         
-    for i in col:
-        fig = ff.create_distplot(dataset, y=i, marginal="box")
-        fig.update_layout(template='plotly_dark')
-        fig.update_xaxes(showgrid=False, zeroline=False)
-        fig.update_yaxes(showgrid=False, zeroline=False)
-        # fig.show()
-        fig.write_image(f"{i}_displot.jpg")
-        # a.append(fig)
+    # for i in col:
+    #     fig = ff.create_distplot(dataset, y=i, marginal="box")
+    #     fig.update_layout(template='plotly_dark')
+    #     fig.update_xaxes(showgrid=False, zeroline=False)
+    #     fig.update_yaxes(showgrid=False, zeroline=False)
+    #     # fig.show()
+    #     fig.write_image(f"{i}_displot.jpg")
+    #     # a.append(fig)
     
     df=dataset.drop("isFraud",axis=1)
     y=df.corr().columns.tolist()
