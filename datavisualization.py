@@ -68,29 +68,34 @@ def data_visu():
     a.append(fig)
     # fig.show()
 
-    for numerical_feature in numer:
-        fig = px.box(data, y=numerical_feature)
-        fig.update_layout(template='plotly_dark')
-        fig.update_xaxes(showgrid=False)
-        fig.update_yaxes(showgrid=False,zeroline=True,zerolinewidth=4)
-        a.append(fig)
-        # fig.show()
+    df = px.data.tips() # load plotly tips data
+    fig = px.box(df, y="tip")
+    a.append(fig)
+    fig.show()
 
-    for numerical_feature in numer:
-        fig = ff.create_distplot([data[numerical_feature]], [numerical_feature], show_rug=False)
-        fig.update_layout(template='plotly_dark')
-        fig.update_xaxes(title_text=numerical_feature, showgrid=False)
-        fig.update_yaxes(showgrid=False)
-        a.append(fig)
-        # fig.show()
+    # for numerical_feature in numer:
+    #     fig = px.box(data, y=numerical_feature)
+    #     fig.update_layout(template='plotly_dark')
+    #     fig.update_xaxes(showgrid=False)
+    #     fig.update_yaxes(showgrid=False,zeroline=True,zerolinewidth=4)
+    #     a.append(fig)
+    #     # fig.show()
+
+    # for numerical_feature in numer:
+    #     fig = ff.create_distplot([data[numerical_feature]], [numerical_feature], show_rug=False)
+    #     fig.update_layout(template='plotly_dark')
+    #     fig.update_xaxes(title_text=numerical_feature, showgrid=False)
+    #     fig.update_yaxes(showgrid=False)
+    #     a.append(fig)
+    #     # fig.show()
     
-    for categorical_feature in categ:
-        fig = px.histogram(data, x=categorical_feature)
-        fig.update_layout(template='plotly_dark')
-        fig.update_xaxes(showgrid=False)
-        fig.update_yaxes(showgrid=False)
-        a.append(fig)
-        # fig.show()
+    # for categorical_feature in categ:
+    #     fig = px.histogram(data, x=categorical_feature)
+    #     fig.update_layout(template='plotly_dark')
+    #     fig.update_xaxes(showgrid=False)
+    #     fig.update_yaxes(showgrid=False)
+    #     a.append(fig)
+    #     # fig.show()
 
     figures = a
     image_list = [pio.to_image(fig, format='png', width=1440, height=900, scale=1.5) for fig in figures]
@@ -101,7 +106,7 @@ def data_visu():
             image_list[index] = image  # overwrite byte image data in list, replace with PIL converted image data
     
     # pop first item from image_list, use that to access .save(). Then refer back to image_list to append the rest
-    image_list.pop(0).save(r'./Test#656.pdf', 'PDF',
+    image_list.pop(0).save(r'./finance_test#670.pdf', 'PDF',
                     save_all=True, append_images=image_list, resolution=100.0)
     
 
