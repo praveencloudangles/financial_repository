@@ -18,8 +18,9 @@ def feature_eng():
 
     x = data.drop('isFraud', axis=1)
     y = data['isFraud']
-    undersample = RandomUnderSampler()
-    X, Y = undersample.fit_resample(x, y)
+    oversample = SMOTE()
+    # undersample = RandomUnderSampler()
+    X, Y = oversample.fit_resample(x, y)
     data = pd.concat([x, pd.Series(Y, name='isFraud')], axis=1)
 
     print("null values---------------",data.isnull().sum())
@@ -35,6 +36,7 @@ def feature_eng():
     data['newbalanceOrig'] = data['newbalanceOrig'].astype('int')
     data['newbalanceDest'] = data['newbalanceDest'].astype('int')
     data['oldbalanceDest'] = data['oldbalanceDest'].astype('int')
+    data['isFraud'] = data['isFraud'].astype('int')
     print(data.dtypes)
 
     data.to_csv("financial_usecase.csv")
