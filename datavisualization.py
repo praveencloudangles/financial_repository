@@ -1,7 +1,6 @@
 print("data visualization--------------------")
 
 import numpy as np
-from data_cleaning import data_cleaning
 from feature_engineering import feature_eng
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
@@ -17,7 +16,7 @@ numer = []
 a = []
 
 def data_visu():
-    data = data_cleaning()
+    data = feature_eng()
     
     for col in data.columns:
         if data[col].dtypes == object:
@@ -47,9 +46,9 @@ def data_visu():
     # a.append(fig)
     # fig.show()
 
-    dataset = feature_eng()
-    columns = ['isFraud', 'newbalanceDest', 'oldbalanceOrg', 'newbalanceOrig', 'amount', 'type']
-    subset_df = dataset[columns]
+   
+    columns = ['isFraud', 'newbalanceDest', 'oldbalanceOrg', 'oldbalanceDest','newbalanceOrig', 'amount', 'type']
+    subset_df = data[columns]
     data_num_corr = subset_df.corr()
     fig = go.Figure()
     fig.add_trace(
@@ -69,21 +68,21 @@ def data_visu():
     # fig.show()
 
 
-    # for numerical_feature in numer:
-    #     fig = px.box(data, y=numerical_feature)
-    #     fig.update_layout(template='plotly_dark')
-    #     fig.update_xaxes(showgrid=False)
-    #     fig.update_yaxes(showgrid=False,zeroline=True,zerolinewidth=4)
-    #     a.append(fig)
-    #     # fig.show()
+    for numerical_feature in numer:
+        fig = px.box(data, y=numerical_feature)
+        fig.update_layout(template='plotly_dark')
+        fig.update_xaxes(showgrid=False)
+        fig.update_yaxes(showgrid=False,zeroline=True,zerolinewidth=4)
+        a.append(fig)
+        # fig.show()
 
-    # for numerical_feature in numer:
-    #     fig = ff.create_distplot([data[numerical_feature]], [numerical_feature], show_rug=False)
-    #     fig.update_layout(template='plotly_dark')
-    #     fig.update_xaxes(title_text=numerical_feature, showgrid=False)
-    #     fig.update_yaxes(showgrid=False)
-    #     a.append(fig)
-    #     # fig.show()
+    for numerical_feature in numer:
+        fig = ff.create_distplot([data[numerical_feature]], [numerical_feature], show_rug=False)
+        fig.update_layout(template='plotly_dark')
+        fig.update_xaxes(title_text=numerical_feature, showgrid=False)
+        fig.update_yaxes(showgrid=False)
+        a.append(fig)
+        # fig.show()
     
     # for categorical_feature in categ:
     #     fig = px.histogram(data, x=categorical_feature)
