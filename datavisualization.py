@@ -68,10 +68,6 @@ def data_visu():
     a.append(fig)
     # fig.show()
 
-    df = px.data.tips() # load plotly tips data
-    fig = px.box(df, y="tip")
-    a.append(fig)
-    fig.show()
 
     # for numerical_feature in numer:
     #     fig = px.box(data, y=numerical_feature)
