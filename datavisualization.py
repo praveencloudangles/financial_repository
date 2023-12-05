@@ -3,7 +3,7 @@ from data_cleaning import data_cleaning
 from feature_engineering import feature_eng
 import pandas as pd
 import plotly.express as px
-# from IPython.display import Image
+from IPython.display import Image
 import warnings
 warnings.filterwarnings("ignore")
 import numpy as np
