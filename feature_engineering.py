@@ -39,7 +39,7 @@ def feature_eng():
     data['isFraud'] = data['isFraud'].astype('int')
     print(data.dtypes)
 
-    data.to_csv("financial_usecase.csv")
+    data.to_csv("financial_usecase.csv",index=False)
     return data
 
 feature_eng()
